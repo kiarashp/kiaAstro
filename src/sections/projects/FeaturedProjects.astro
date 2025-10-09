@@ -1,0 +1,90 @@
+---
+// import { featuredProjects } from "../../data/projects";
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+
+type props ={
+  projects :CollectionEntry<"projects">[]
+}
+const { projects } = Astro.props as props;
+
+const featuredProjects = projects.filter((p) => p.data.featured);
+---
+
+<!-- Featured Projects -->
+  <section class="py-12 sm:py-20 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex items-center gap-2 mb-8 sm:mb-12">
+        <Icon name="lucide:star" class="h-6 w-6 sm:h-8 sm:w-8 text-warning" />
+        <h2 class="text-4xl sm:text-4xl font-bold">Featured Projects</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+        {
+          featuredProjects.map((project) => (
+            <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+              <figure class="px-6 pt-6 sm:px-10 sm:pt-10">
+                <div class="relative bg-base-300 w-full h-48 sm:h-64 rounded-xl flex items-center justify-center overflow-hidden">
+                  {project.data.imageUrl ? (
+                    <img
+                      src={project.data.imageUrl}
+                      alt={project.data.title}
+                      class="w-full h-full object-cover"
+                    />
+                            <div class="absolute inset-0 bg-base-300/20"></div>
+
+                  ) : (
+                    <Icon
+                      name="lucide:image"
+                      class="h-16 w-16 sm:h-20 sm:w-20 opacity-20"
+                    />
+                  )}
+                </div>
+              </figure>
+
+              <div class="card-body">
+                <h3 class="card-title text-xl sm:text-2xl">{project.data.title}</h3>
+                <p class="text-sm sm:text-base opacity-80">
+                  {project.data.desc}
+                </p>
+
+                <div class="flex flex-wrap gap-2 my-3">
+                  {project.data.tags.map((tag) => (
+                    <span class="badge badge-primary badge-sm sm:badge-md">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div class="card-actions justify-end mt-2">
+                  <a
+                    href={project.data.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-ghost btn-sm sm:btn-md gap-2"
+                  >
+                    <Icon name="lucide:github" class="h-4 w-4 sm:h-5 sm:w-5" />
+                    Code
+                  </a>
+                  {project.data.demo && (
+                    <a
+                      href={project.data.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-primary btn-sm sm:btn-md gap-2"
+                    >
+                      <Icon
+                        name="lucide:external-link"
+                        class="h-4 w-4 sm:h-5 sm:w-5"
+                      />
+                      Live Demo
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>

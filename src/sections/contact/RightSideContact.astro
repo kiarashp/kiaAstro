@@ -1,0 +1,75 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<!-- Contact Info & Social -->
+<div class="space-y-6">
+  <!-- Contact Info Card -->
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h3 class="card-title text-xl mb-4">Get in Touch</h3>
+
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <div class="badge badge-primary badge-lg mt-1">
+            <Icon name="lucide:mail" class="w-4 h-4" />
+          </div>
+          <div>
+            <p class="font-semibold">Email</p>
+            <p
+              id="email-container"
+              class="link link-hover text-sm cursor-pointer"
+            >
+              info [at] kiapmd [dot] dev
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="badge badge-primary badge-lg mt-1">
+            <Icon name="lucide:map-pin" class="w-4 h-4" />
+          </div>
+          <div>
+            <p class="font-semibold">Location</p>
+            <p class="text-sm text-base-content/70">Lissone, Lombardy, IT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social Links Card -->
+  <div
+    class="card bg-base-100  shadow-xl"
+  >
+    <div class="card-body">
+      <h3 class="card-title text-xl mb-4">Connect on Social</h3>
+
+      <div class="flex gap-3 flex-wrap">
+        <a
+          href="https://github.com/kiarashp"
+          class="btn btn-circle btn-ghost bg-base-100/20 hover:bg-base-100/30"
+          aria-label="GitHub"
+        >
+          <Icon name="lucide:github" class="w-5 h-5" />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/kiarash-p-48b643175/"
+          class="btn btn-circle btn-ghost bg-base-100/20 hover:bg-base-100/30"
+          aria-label="LinkedIn"
+        >
+          <Icon name="lucide:linkedin" class="w-5 h-5" />
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const el = document.getElementById("email-container");
+  el?.addEventListener("click", () => {
+    window.location.href = "mailto:" + "info" + "@" + "kiapmd.dev";
+  });
+</script>

@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { href: "https://github.com/kiarashp", icon: "lucide:github", label: "GitHub" },
+  { href: "https://www.linkedin.com/in/kiarash-p-48b643175/", icon: "lucide:linkedin", label: "LinkedIn" },
+  { href: "mailto:info@kiapmd.dev", icon: "lucide:mail", label: "Email", isExternal: false },
+];
+---
+
+<footer class="footer footer-center p-6 sm:p-10 bg-base-300 text-base-content">
+  <!-- Social Links -->
+  <nav class="flex flex-wrap justify-center gap-3 sm:gap-4">
+    {socialLinks.map(link => (
+      <a
+        href={link.href}
+        target={link.isExternal !== false ? "_blank" : undefined}
+        rel={link.isExternal !== false ? "noopener noreferrer" : undefined}
+        class="btn btn-ghost btn-circle btn-sm sm:btn-md"
+        aria-label={link.label}
+      >
+        <Icon name={link.icon} class="h-5 w-5 sm:h-6 sm:w-6" />
+      </a>
+    ))}
+  </nav>
+
+  <!-- Short personal message -->
+  <aside class="text-center max-w-md">
+    <p class="font-semibold text-sm sm:text-base">
+      Crafted by Kiarash — building fast, modern web experiences.
+    </p>
+    <p class="text-xs sm:text-sm opacity-80">
+      © {currentYear} All rights reserved
+    </p>
+  </aside>
+</footer>

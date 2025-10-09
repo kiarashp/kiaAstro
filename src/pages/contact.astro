@@ -1,0 +1,22 @@
+---
+// Contact.astro
+import Layout from "../layouts/Layout.astro";
+import Pagetitle from "../components/Pagetitle.astro";
+import FormContact from "../sections/contact/FormContact.astro";
+import RightSideContact from "../sections/contact/RightSideContact.astro";
+---
+
+<Layout title="contact me" description="contact me description">
+  <Pagetitle
+    title="Let's Connect"
+    subtitle="Have a question or want to work together? I'd love to hear from you."
+  />
+  <section class="min-h-screen bg-base-100 py-12 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <FormContact />
+        <RightSideContact />
+      </div>
+    </div>
+  </section>
+</Layout>

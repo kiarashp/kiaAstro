@@ -1,0 +1,29 @@
+---
+// ContactCTA.astro
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="py-12 px-4 bg-base-300/50 dark:bg-base-200/50">
+  <div class="container mx-auto max-w-3xl">
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body text-center py-8">
+        <div class="inline-block p-3 bg-primary/10 rounded-full mb-4 mx-auto w-fit">
+          <Icon name="lucide:message-circle" class="h-8 w-8 text-primary" />
+        </div>
+        
+        <h2 class="text-2xl sm:text-3xl font-bold mb-3">
+          Let's Work Together
+        </h2>
+        
+        <p class="text-base text-base-content/70 mb-6">
+          Have a project or need consultation? Let's discuss how I can help bring your ideas to life.
+        </p>
+        
+        <a href="/contact" class="btn btn-primary btn-lg gap-2 mx-auto">
+          <Icon name="lucide:mail" class="h-5 w-5" />
+          Get In Touch
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

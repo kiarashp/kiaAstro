@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+const mySkills = [
+  { label: "HTML", badge: "badge-primary" },
+  { label: "CSS", badge: "badge-accent" },
+  { label: "JavaScript", badge: "badge-secondary" },
+  { label: "TypeScript", badge: "badge-primary" },
+  { label: "Svelte", badge: "badge-accent" },
+  { label: "SvelteKit", badge: "badge-secondary" },
+  { label: "React", badge: "badge-primary" },
+  { label: "Next.js", badge: "badge-accent" },
+  { label: "Astro", badge: "badge-secondary" },
+  { label: "Strapi", badge: "badge-primary" },
+  { label: "WordPress", badge: "badge-accent" },
+  { label: "WooCommerce", badge: "badge-secondary" },
+  { label: "Stripe", badge: "badge-primary" },
+  { label: "Git", badge: "badge-accent" },
+  { label: "GitHub", badge: "badge-secondary" },
+  { label: "SEO", badge: "badge-primary" },
+  { label: "Tailwind CSS", badge: "badge-accent" },
+  { label: "DaisyUI", badge: "badge-secondary" },
+  { label: "ShadCN UI", badge: "badge-primary" },
+  { label: "Supabase", badge: "badge-accent" },
+  { label: "Firebase", badge: "badge-secondary" },
+  { label: "Prisma", badge: "badge-primary" },
+  { label: "Sanity CMS", badge: "badge-accent" },
+  { label: "Vite", badge: "badge-secondary" },
+];
+---
+
+<!-- Skills -->
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h3 class="card-title text-xl mb-3">
+      <Icon name="lucide:code-2" class="h-5 w-5 text-primary" />
+      Skills & Technologies
+    </h3>
+    <div class="flex flex-wrap gap-2">
+      {
+        mySkills.map((skill) => (
+          <div class={`badge ${skill.badge} badge-lg`}>{skill.label}</div>
+        ))
+      }
+    </div>
+  </div>
+</div>

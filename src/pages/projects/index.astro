@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Pagetitle from "../../components/Pagetitle.astro";
+import FeaturedProjects from "../../sections/projects/FeaturedProjects.astro";
+import OtherProjects from "../../sections/projects/OtherProjects.astro";
+
+import { getCollection } from "astro:content";
+
+// Get all project entries
+const projectPosts = await getCollection("projects");
+---
+
+<Layout
+  title="Projects"
+  description="Explore my portfolio of web development projects"
+>
+  <!-- Page title -->
+  <Pagetitle
+    title="My Projects"
+    subtitle="Things I’ve created and what I can do."
+  />
+
+  <FeaturedProjects projects={projectPosts} />
+  <OtherProjects projects={projectPosts}/>
+</Layout>

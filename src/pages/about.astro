@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+import ProfileAbout from "../sections/about/ProfileAbout.astro";
+import MainTxtAbout from "../sections/about/MainTxtAbout.astro";
+import SkillsAbout from "../sections/about/SkillsAbout.astro";
+import WhatIDoAbout from "../sections/about/WhatIDoAbout.astro";
+---
+
+<Layout title="about me" description="about me and what I can do">
+  <section class="py-16 px-4">
+    <div class="container mx-auto max-w-4xl">
+      <div class="grid md:grid-cols-3 gap-8 items-start">
+        <ProfileAbout />
+
+        <!-- Content -->
+        <div class="md:col-span-2 space-y-6">
+          <MainTxtAbout />
+
+          <SkillsAbout />
+
+          <WhatIDoAbout />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
