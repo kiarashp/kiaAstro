@@ -3,7 +3,7 @@ title: "Solar Power Website (Next.js & Strapi, EN/FA)"
 publishDate: 2025-06-10
 desc: "A bilingual (Persian & English) website for selling solar power services, built with Next.js and Strapi. Features include multi-language support using i18n for seamless language switching and a modern, responsive design."
 short: "A bilingual (Persian/English) solar power services website built with Next.js and Strapi. Features i18n for multi-language support and a modern, responsive design."
-imageUrl: "/projects/solar.jpg"
+imageUrl: "../../images/projects/solar.jpg"
 tags: ["Next.js", "Strapi", "i18n", "Bilingual Website", "TypeScript"]
 github: null
 demo: "https://sabzenergynovin.ir/en"

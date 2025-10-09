@@ -4,10 +4,11 @@ import { Icon } from "astro-icon/components";
 import type { CollectionEntry } from "astro:content";
 
 type props = {
-  projects: CollectionEntry<"projects">[]
-}
-const {projects} = Astro.props as props
-const otherProjects = projects.filter(p=>!p.data.featured)
+  projects: CollectionEntry<"projects">[];
+};
+const { projects } = Astro.props as props;
+const otherProjects = projects.filter((p) => !p.data.featured);
+import { Image } from "astro:assets";
 ---
 
 <!-- Other Projects -->
@@ -22,10 +23,14 @@ const otherProjects = projects.filter(p=>!p.data.featured)
             <figure class="px-6 pt-6 sm:px-8 sm:pt-8">
               <div class="bg-base-300 w-full h-40 sm:h-48 rounded-xl flex items-center justify-center overflow-hidden">
                 {project.data.imageUrl ? (
-                  <img
+                  <Image
                     src={project.data.imageUrl}
                     alt={project.data.title}
-                    class="w-full h-full object-cover"
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover rounded-xl"
+                    loading="eager"
+                    decoding="async"
                   />
                 ) : (
                   <Icon
@@ -37,7 +42,9 @@ const otherProjects = projects.filter(p=>!p.data.featured)
             </figure>
 
             <div class="card-body">
-              <h3 class="card-title text-lg sm:text-xl">{project.data.title}</h3>
+              <h3 class="card-title text-lg sm:text-xl">
+                {project.data.title}
+              </h3>
               <p class="text-xs sm:text-sm opacity-80 line-clamp-4">
                 {project.data.desc}
               </p>
@@ -49,25 +56,28 @@ const otherProjects = projects.filter(p=>!p.data.featured)
               </div>
 
               <div class="card-actions justify-end mt-2">
-                <a
-                  href={project.data.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-ghost btn-xs sm:btn-sm"
-                >
-                  <Icon name="lucide:github" class="h-3 w-3 sm:h-4 sm:w-4" />
-                </a>
+                {project.data.github && (
+                  <a
+                    href={project.data.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-ghost btn-xs sm:btn-sm"
+                  >
+                    <Icon name="lucide:github" class="h-3 w-3 sm:h-4 sm:w-4" />
+                  </a>
+                )}
                 {project.data.demo && (
                   <a
                     href={project.data.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="btn btn-primary btn-xs sm:btn-sm"
+                    class="btn btn-primary btn-sm sm:btn-md gap-2"
                   >
                     <Icon
                       name="lucide:external-link"
-                      class="h-3 w-3 sm:h-4 sm:w-4"
+                      class="h-4 w-4 sm:h-5 sm:w-5"
                     />
+                    Live Demo
                   </a>
                 )}
               </div>

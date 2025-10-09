@@ -3,7 +3,7 @@ title: "Meditrack: AI Medicine Tracker"
 publishDate: 2025-06-10
 desc: "I built Meditrack, a web app that helps users recognize and track their medicines. Users can log in with Google, take or upload a photo of a medicine, and the system uses AI to detect and identify it. Identified medicines can be saved to a personal profile for easy tracking. I developed the full stack using SvelteKit for the frontend, Supabase for authentication and database management, and the OpenAI GPT API for intelligent image-to-text detection. This project demonstrates my ability to integrate authentication, AI APIs, and cloud databases into a seamless, user-friendly product."
 short: "SvelteKit web app utilizing OpenAI GPT for AI-driven medicine identification from user photos, with Google/Supabase authentication and personal profiles for tracking."
-imageUrl: "/projects/meditrack.jpg"
+imageUrl: "../../images/projects/meditrack.jpg"
 tags: ["Svelte", "TypeScript", "Tailwind CSS", "Supabase", "OpenAI API", "Full-Stack Development"]
 github: "https://github.com/kiarashp/svelte-mediscan"
 demo: "https://meditrack.kiapmd.dev"

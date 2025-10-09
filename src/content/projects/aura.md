@@ -3,7 +3,7 @@ title: "Aura: E-commerce Website"
 publishDate: 2025-04-10
 desc: "I built Aura, a luxury e-commerce furniture website using SvelteKit, Tailwind, and Stripe. The goal was to create a modern, responsive platform with smooth UX, product filtering by price/category, and a user dashboard. I handled both front-end and back-end, using Prisma and Neon for database management. The result is a fast, clean, and elegant shopping experience with light/dark mode and secure payments."
 short: "A full-stack luxury e-commerce furniture site built with SvelteKit/Tailwind, using Prisma/Neon DB and Stripe for secure payments. Features: smooth UX, product filtering, light/dark mode."
-imageUrl: "/projects/aura.jpg"
+imageUrl: "../../images/projects/aura.jpg"
 tags: ["Svelte", "SvelteKit", "Tailwind CSS", "Ecommerce", "Stripe", "Responsive Design"]
 github: "https://github.com/kiarashp/svelte-Aura"
 demo: "https://svelte-ecommerce.kiapmd.dev/"

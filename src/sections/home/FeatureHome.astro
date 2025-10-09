@@ -1,6 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
-import { featuredProjects } from "../../data/projects";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+type props = {
+  projects: CollectionEntry<"projects">[];
+};
+const { projects } = Astro.props as props;
+const featuredProjects = projects.filter((p) => p.data.featured);
 ---
 
 <!-- Featured Projects Section -->
@@ -10,16 +16,20 @@ import { featuredProjects } from "../../data/projects";
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        featuredProjects.map((proj) => (
+        featuredProjects.map((project) => (
           <div class="card bg-base-100 shadow-xl">
             <figure class="px-10 pt-10">
               <div class="relative bg-base-300 w-full aspect-video rounded-xl overflow-hidden">
-                {proj.image ? (
+                {project.data.imageUrl ? (
                   <>
-                    <img
-                      src={proj.image}
-                      alt={proj.title}
-                      class="w-full h-full object-cover"
+                    <Image
+                      src={project.data.imageUrl}
+                      alt={project.data.title}
+                      width={600}
+                      height={400}
+                      class="w-full h-full object-cover rounded-xl"
+                      loading="eager"
+                      decoding="async"
                     />
                     <div class="absolute inset-0 bg-base-300/20" />
                   </>
@@ -34,64 +44,28 @@ import { featuredProjects } from "../../data/projects";
               </div>
             </figure>
             <div class="card-body">
-              <h3 class="card-title">{proj.title}</h3>
-              <p>{proj.short}</p>
+              <h3 class="card-title">{project.data.title}</h3>
+              <p>{project.data.short}</p>
               <div class="card-actions justify-end mt-4">
-                  {proj.demo && (
-                    <a
-                      href={proj.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn btn-primary btn-sm sm:btn-md gap-2"
-                    >
-                      <Icon
-                        name="lucide:external-link"
-                        class="h-4 w-4 sm:h-5 sm:w-5"
-                      />
-                      Live Demo
-                    </a>
-                  )}
+                {project.data.demo && (
+                  <a
+                    href={project.data.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm sm:btn-md gap-2"
+                  >
+                    <Icon
+                      name="lucide:external-link"
+                      class="h-4 w-4 sm:h-5 sm:w-5"
+                    />
+                    Live Demo
+                  </a>
+                )}
               </div>
             </div>
           </div>
         ))
       }
-
-      <!-- Project Card 2 -->
-      <!-- <div class="card bg-base-100 shadow-xl">
-        <figure class="px-10 pt-10">
-          <div
-            class="bg-secondary/10 w-full h-48 rounded-xl flex items-center justify-center"
-          >
-            <Icon name="lucide:sparkles" class="h-20 w-20 text-secondary" />
-          </div>
-        </figure>
-        <div class="card-body">
-          <h3 class="card-title">Another Project</h3>
-          <p>Another amazing project showcasing your skills and creativity.</p>
-          <div class="card-actions justify-end mt-4">
-            <a href="#" class="btn btn-primary btn-sm">View Project</a>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- Project Card 3 -->
-      <!-- <div class="card bg-base-100 shadow-xl">
-        <figure class="px-10 pt-10">
-          <div
-            class="bg-accent/10 w-full h-48 rounded-xl flex items-center justify-center"
-          >
-            <Icon name="lucide:zap" class="h-20 w-20 text-accent" />
-          </div>
-        </figure>
-        <div class="card-body">
-          <h3 class="card-title">Cool App</h3>
-          <p>Description of this cool application you built from scratch.</p>
-          <div class="card-actions justify-end mt-4">
-            <a href="#" class="btn btn-primary btn-sm">View Project</a>
-          </div>
-        </div>
-      </div> -->
     </div>
 
     <div class="text-center mt-12">

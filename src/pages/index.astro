@@ -5,11 +5,15 @@ import HeroHome from "../sections/home/HeroHome.astro";
 import SkillHome from "../sections/home/SkillHome.astro";
 import FeatureHome from "../sections/home/FeatureHome.astro";
 import CTAHome from "../sections/home/CTAHome.astro";
+import { getCollection } from "astro:content";
+
+
+const projectPosts = await getCollection("projects");
 ---
 
 <Layout title="Home - Your Portfolio">
   <HeroHome />
   <SkillHome />
-  <FeatureHome />
+  <FeatureHome  projects={projectPosts}/>
   <CTAHome />
 </Layout>

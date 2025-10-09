@@ -3,7 +3,7 @@ title: "Coopl – E-commerce Wordpress Website"
 publishDate: 2025-06-10
 desc: "Coopl is a professional e-commerce website built with WordPress and WooCommerce, specializing in thermocouples, industrial heating elements, and related products. Fully optimized for SEO to boost online visibility and drive sales."
 short: "Coopl: A professional e-commerce site built with WordPress/WooCommerce, specializing in thermocouples, industrial heating elements, and related products. Fully SEO-optimized for visibility."
-imageUrl: "/projects/coopl.jpg"
+imageUrl: "../../images/projects/coopl.jpg"
 tags: ["Wordpress", "Woocommerce", "PHP"]
 github: null
 demo: "https://coopl.ir/"
