@@ -27,8 +27,8 @@ const featuredProjects = projects.filter((p) => p.data.featured);
           >
             {project.data.imageUrl ? (
             <Image
-              src="{project.data.imageUrl}"
-              alt="{project.data.title}"
+              src={project.data.imageUrl}
+              alt={project.data.title}
               width="600"
               height="400"
               class="w-full h-full object-cover rounded-xl"
