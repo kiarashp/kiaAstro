@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import kia from "../../images/about/kia.jpg";
 ---
 
 <!-- Profile Card -->
@@ -10,7 +12,15 @@ import { Icon } from "astro-icon/components";
         <div
           class="relative w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
         >
-          <img src="/about/kia.jpg" alt="Profile" />
+          <Image
+            src={kia}
+            alt="kiarash"
+            width={600}
+            height={400}
+            class="w-full h-full object-cover rounded-xl"
+            loading="eager"
+            decoding="async"
+          />
           <div class="absolute inset-0 bg-base-300/10"></div>
         </div>
       </div>
