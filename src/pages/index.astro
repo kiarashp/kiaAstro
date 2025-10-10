@@ -7,13 +7,16 @@ import FeatureHome from "../sections/home/FeatureHome.astro";
 import CTAHome from "../sections/home/CTAHome.astro";
 import { getCollection } from "astro:content";
 
-
 const projectPosts = await getCollection("projects");
 ---
 
-<Layout title="Home - Your Portfolio">
+<Layout
+  title="Kiarash | Astro.js Portfolio "
+  description="Explore the portfolio of Kiarash , a frontend developer. Built with Astro.js, Tailwind CSS, and DaisyUI, this fast, responsive, and SEO-friendly website showcases projects, skills, and modern web development expertise.
+"
+>
   <HeroHome />
   <SkillHome />
-  <FeatureHome  projects={projectPosts}/>
+  <FeatureHome projects={projectPosts} />
   <CTAHome />
 </Layout>
