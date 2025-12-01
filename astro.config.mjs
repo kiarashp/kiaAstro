@@ -7,8 +7,12 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  vite:{
-      plugins:[tailwindcss()]
+  server: {
+    host: '127.0.0.1',
+    port: 4321,
+  },
+  vite: {
+    plugins: [tailwindcss()]
   },
 
   integrations: [icon(), react()]

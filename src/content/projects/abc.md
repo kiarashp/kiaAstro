@@ -7,7 +7,7 @@ imageUrl: "../../images/projects/abcCompany.jpg"
 tags: ["Svelte", "SvelteKit", "Tailwind CSS", "Sanity CMS", "SendGrid", "Vercel"]
 github: "https://github.com/kiarashp/svelte-company"
 demo: "https://svelte-abc.kiapmd.dev"
-featured: true
+featured: false
 ---
 
 ### Overview
