@@ -5,7 +5,7 @@ desc: "I built Coopl Element, a fully static bilingual website (Persian & Englis
 short: "Bilingual Astro.js website for JUMO & WIKA distributor with 100/100 Lighthouse scores and automated deployment via Nginx + Cloudflare."
 imageUrl: "../../images/projects/cooplelement.jpg"
 tags: ["Astro.js", "Tailwind CSS", "DaisyUI", "Web Performance", "SEO Optimization", "Frontend Development"]
-demo: "https://cooplelement.com"
+demo: "https://cooplelement.kiapmd.dev/en"
 featured: true
 ---
 
