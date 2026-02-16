@@ -6,7 +6,7 @@ short: "A bilingual (Persian/English) solar power services website built with Ne
 imageUrl: "../../images/projects/solar.jpg"
 tags: ["Next.js", "Strapi", "i18n", "Bilingual Website", "TypeScript"]
 github: null
-demo: "https://sabzenergynovin.ir/en"
+demo: "https://solar.kiapmd.dev/en"
 featured: false
 ---
 
