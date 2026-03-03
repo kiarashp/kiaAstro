@@ -7,7 +7,7 @@ imageUrl: "../../images/projects/aura.jpg"
 tags: ["Svelte", "SvelteKit", "Tailwind CSS", "Ecommerce", "Stripe", "Responsive Design"]
 github: "https://github.com/kiarashp/svelte-Aura"
 demo: "https://svelte-ecommerce.kiapmd.dev/"
-featured: true
+featured: false
 ---
 
 ### Overview
