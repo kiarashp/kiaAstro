@@ -7,7 +7,7 @@ imageUrl: "../../images/projects/meditrack.jpg"
 tags: ["Svelte", "TypeScript", "Tailwind CSS", "Supabase", "OpenAI API", "Full-Stack Development"]
 github: "https://github.com/kiarashp/svelte-mediscan"
 demo: "https://meditrack.kiapmd.dev"
-featured: true
+featured: false
 ---
 
 ### Overview
