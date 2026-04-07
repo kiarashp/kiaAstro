@@ -1,14 +1,13 @@
 ---
-// import { otherProjects } from "../../data/projects";
 import { Icon } from "astro-icon/components";
 import type { CollectionEntry } from "astro:content";
+import ProjectCard from "../../components/ProjectCard.astro";
 
 type props = {
   projects: CollectionEntry<"projects">[];
 };
 const { projects } = Astro.props as props;
 const otherProjects = projects.filter((p) => !p.data.featured);
-import { Image } from "astro:assets";
 ---
 
 <!-- Other Projects -->
@@ -16,75 +15,10 @@ import { Image } from "astro:assets";
   <div class="container mx-auto max-w-6xl">
     <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">More Projects</h2>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        otherProjects.map((project) => (
-          <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-            <figure class="px-6 pt-6 sm:px-8 sm:pt-8">
-              <div class="bg-base-300 w-full h-40 sm:h-48 rounded-xl flex items-center justify-center overflow-hidden">
-                {project.data.imageUrl ? (
-                  <Image
-                    src={project.data.imageUrl}
-                    alt={project.data.title}
-                    width={600}
-                    height={400}
-                    class="w-full h-full object-cover rounded-xl"
-                    loading="eager"
-                    decoding="async"
-                  />
-                ) : (
-                  <Icon
-                    name="lucide:code"
-                    class="h-12 w-12 sm:h-16 sm:w-16 opacity-20"
-                  />
-                )}
-              </div>
-            </figure>
-
-            <div class="card-body">
-              <h3 class="card-title text-lg sm:text-xl">
-                {project.data.title}
-              </h3>
-              <p class="text-xs sm:text-sm opacity-80 line-clamp-4">
-                {project.data.desc}
-              </p>
-
-              <div class="flex flex-wrap gap-1 sm:gap-2 my-2">
-                {project.data.tags.map((tag) => (
-                  <span class="badge badge-sm">{tag}</span>
-                ))}
-              </div>
-
-              <div class="card-actions justify-end mt-2">
-                {project.data.github && (
-                  <a
-                    href={project.data.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-ghost btn-xs sm:btn-sm"
-                  >
-                    <Icon name="lucide:github" class="h-3 w-3 sm:h-4 sm:w-4" />
-                  </a>
-                )}
-                {project.data.demo && (
-                  <a
-                    href={project.data.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary btn-sm sm:btn-md gap-2"
-                  >
-                    <Icon
-                      name="lucide:external-link"
-                      class="h-4 w-4 sm:h-5 sm:w-5"
-                    />
-                    Live Demo
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        ))
-      }
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-rows-[auto_auto_auto_auto]">
+      {otherProjects.map((project) => (
+        <ProjectCard project={project} featured={false} />
+      ))}
     </div>
   </div>
 </section>

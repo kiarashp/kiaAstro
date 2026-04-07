@@ -37,8 +37,3 @@ The focus was on building a scalable and structured API using FastAPI, with clea
 - Modular architecture with dependency injection  
 
 ### Outcome
-
-This project significantly strengthened my **backend engineering skills**.  
-I gained hands-on experience with API design, authentication flows, database modeling, and deploying real-world backend services.
-
-It also gave me a solid understanding of how to structure scalable backend systems and integrate multiple services together.

@@ -1,0 +1,101 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { title, desc, short, imageUrl, tags, github, demo } = project.data;
+const slug = project.id.replace(".md", "");
+const detailUrl = `/projects/${slug}`;
+---
+
+<div class="group grid grid-rows-subgrid row-span-4 rounded-2xl bg-base-100 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-base-300/40">
+
+  <!-- Row 1: Browser mockup -->
+  <div class="bg-base-300 px-3 pt-2.5 pb-0">
+    <div class="flex items-center gap-2 mb-2">
+      <div class="flex gap-1 shrink-0">
+        <span class="w-2.5 h-2.5 rounded-full bg-error/70"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-warning/70"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-success/70"></span>
+      </div>
+      <div class="flex-1 bg-base-100/60 rounded px-2 py-0.5 flex items-center gap-1.5 min-w-0">
+        <Icon name="lucide:lock" class="h-2.5 w-2.5 opacity-40 shrink-0" />
+        <span class="text-[10px] opacity-40 truncate font-mono">
+          {demo ? demo.replace(/^https?:\/\//, "") : title.toLowerCase().replace(/\s+/g, "-") + ".dev"}
+        </span>
+      </div>
+    </div>
+    <div class="relative overflow-hidden rounded-t-lg aspect-[16/9] bg-base-200">
+      {imageUrl ? (
+        <Image
+          src={imageUrl}
+          alt={title}
+          width={600}
+          height={400}
+          class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+          loading="eager"
+          decoding="async"
+        />
+      ) : (
+        <div class="w-full h-full flex items-center justify-center">
+          <Icon name="lucide:monitor" class="h-12 w-12 opacity-20" />
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Row 2: Title + description -->
+  <div class="p-4 sm:p-5 pb-0">
+    <h3 class="font-bold text-base sm:text-lg leading-snug mb-2">{title}</h3>
+    <p class="text-xs sm:text-sm opacity-75 line-clamp-3">
+      {short ?? desc}
+    </p>
+  </div>
+
+  <!-- Row 3: Tags -->
+  <div class="px-4 sm:px-5 pt-3">
+    <div class="flex flex-wrap gap-1">
+      {tags.map((tag) => (
+        <span class="badge badge-sm">{tag}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Row 4: Actions -->
+  <div class="px-4 sm:px-5 py-3 border-t border-base-300/50 flex items-center justify-between">
+    <a href={detailUrl} class="btn btn-ghost btn-xs sm:btn-sm gap-1">
+      <Icon name="lucide:book-open" class="h-3 w-3" />
+      Details
+    </a>
+    <div class="flex gap-1">
+      {github && (
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-ghost btn-xs sm:btn-sm"
+          title="View source code"
+        >
+          <Icon name="lucide:github" class="h-3 w-3 sm:h-4 sm:w-4" />
+        </a>
+      )}
+      {demo && (
+        <a
+          href={demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-xs sm:btn-sm gap-1"
+        >
+          <Icon name="lucide:external-link" class="h-3 w-3 sm:h-4 sm:w-4" />
+          Demo
+        </a>
+      )}
+    </div>
+  </div>
+
+</div>
