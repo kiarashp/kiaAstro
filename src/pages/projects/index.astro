@@ -1,24 +1,141 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Pagetitle from "../../components/Pagetitle.astro";
-import FeaturedProjects from "../../sections/projects/FeaturedProjects.astro";
-import OtherProjects from "../../sections/projects/OtherProjects.astro";
-
+import ProjectCard from "../../components/ProjectCard.astro";
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 
-const projectPosts = await getCollection("projects");
+const allProjects = await getCollection("projects");
+allProjects.sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+
+const categories = [
+  {
+    id: "astro",
+    label: "Astro.js",
+    icon: "logos:astro-icon",
+    tagMatches: ["Astro.js"],
+  },
+  {
+    id: "svelte",
+    label: "SvelteKit",
+    icon: "logos:svelte-icon",
+    tagMatches: ["Svelte", "SvelteKit"],
+  },
+  {
+    id: "next",
+    label: "Next.js",
+    icon: "logos:nextjs-icon",
+    tagMatches: ["Next.js"],
+  },
+  {
+    id: "python",
+    label: "Python",
+    icon: "logos:python",
+    tagMatches: ["Python", "FastAPI"],
+  },
+  {
+    id: "wordpress",
+    label: "WordPress",
+    icon: "logos:wordpress-icon",
+    tagMatches: ["Wordpress", "PHP", "Woocommerce"],
+  },
+];
+
+const grouped = categories
+  .map((cat) => ({
+    ...cat,
+    projects: allProjects.filter((p) =>
+      p.data.tags.some((t) => cat.tagMatches.includes(t))
+    ),
+  }))
+  .filter((cat) => cat.projects.length > 0);
 ---
 
 <Layout
-  title="Projects"
-  description="Explore my portfolio of web development projects"
+  title="Projects | Kiarash"
+  description="Kiarash's portfolio projects organized by framework and language."
 >
-  <!-- Page title -->
   <Pagetitle
     title="My Projects"
-    subtitle="Things I’ve created and what I can do."
+    subtitle="All my work, grouped by the technology that powers it."
   />
 
-  <FeaturedProjects projects={projectPosts} />
-  <OtherProjects projects={projectPosts}/>
+  <!-- Filter bar -->
+  <section class="py-6 sm:py-8 px-4 bg-base-100 border-b border-base-300">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="text-sm sm:text-base text-base-content/50 mr-1 hidden sm:inline">Filter:</span>
+        <button class="filter-btn btn btn-sm sm:btn-md btn-primary" data-filter="all">
+          All
+          <span class="badge badge-sm sm:badge-md ml-1">{allProjects.length}</span>
+        </button>
+        {
+          grouped.map((cat) => (
+            <button
+              class="filter-btn btn btn-sm sm:btn-md btn-ghost"
+              data-filter={cat.id}
+            >
+              <Icon name={cat.icon} class="h-4 w-4 sm:h-5 sm:w-5" />
+              {cat.label}
+              <span class="badge badge-sm sm:badge-md badge-ghost">{cat.projects.length}</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Sections -->
+  <div class="py-12 sm:py-20 px-4 bg-base-200">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-col gap-16">
+        {
+          grouped.map((cat) => (
+            <section data-section={cat.id} class="category-section">
+              <!-- Section heading -->
+              <div class="flex items-center gap-3 mb-8 sm:mb-12">
+                <Icon name={cat.icon} class="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                <h2 class="text-3xl sm:text-4xl font-bold">{cat.label}</h2>
+                <span class="badge badge-primary badge-md">{cat.projects.length}</span>
+              </div>
+
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-rows-[auto_auto_auto_auto]">
+                {cat.projects.map((project) => (
+                  <ProjectCard project={project} />
+                ))}
+              </div>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  const filterBtns =
+    document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const sections =
+    document.querySelectorAll<HTMLElement>(".category-section");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter ?? "all";
+
+      // Swap active button style
+      filterBtns.forEach((b) => {
+        b.classList.toggle("btn-primary", b === btn);
+        b.classList.toggle("btn-ghost", b !== btn);
+      });
+
+      // Show / hide sections
+      sections.forEach((section) => {
+        const show =
+          filter === "all" || section.dataset.section === filter;
+        section.classList.toggle("hidden", !show);
+      });
+    });
+  });
+</script>
