@@ -7,9 +7,9 @@ Personal portfolio site for Kiarash, a frontend/full-stack web developer. Built 
 ## Dev Commands
 
 ```bash
-npm run dev      # Start dev server at http://127.0.0.1:4321
-npm run build    # Build static output to ./dist/
-npm run preview  # Preview production build locally
+pnpm dev      # Start dev server at http://127.0.0.1:4321
+pnpm build    # Build static output to ./dist/
+pnpm preview  # Preview production build locally
 ```
 
 ## Tech Stack
