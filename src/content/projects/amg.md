@@ -7,7 +7,7 @@ imageUrl: "../../images/projects/amg.jpg"
 tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Stripe"]
 github: null
 demo: "https://amg.kiapmd.dev/"
-featured: true
+featured: false
 ---
 
 ### Overview

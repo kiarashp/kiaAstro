@@ -7,7 +7,7 @@ imageUrl: "../../images/projects/flowship.jpg"
 tags: ["FastAPI", "Python", "PostgreSQL", "SQLModel", "Docker", "Redis", "Backend", "REST API"]
 github: ""
 demo: "https://flowship.kiapmd.dev/"
-featured: true
+featured: false
 ---
 
 ### Overview
