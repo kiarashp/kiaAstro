@@ -5,7 +5,7 @@ desc: "A full-stack product spanning a SvelteKit (SSR) frontend and a NestJS 11 
 short: "Full-stack SvelteKit + NestJS platform for a precision-instruments manufacturer, with a rules-driven product configurator, quote-request messaging, and a role-based CMS."
 imageUrl: "../../images/projects/meridian.jpg"
 tags: ["SvelteKit", "NestJS", "TypeScript", "PostgreSQL", "TypeORM", "OpenAPI", "Playwright"]
-github: "https://github.com/kiarashp/Backend-Nest-Corporate"
+github: null
 demo: "https://meridian.kiapmd.dev/"
 featured: true
 ---
